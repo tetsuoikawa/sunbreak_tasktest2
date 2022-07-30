@@ -1,0 +1,23 @@
+
+   Symfony\Component\Debug\Exception\FatalThrowableError  : syntax error, unexpected '}', expecting ';'
+
+  at C:\xampp\htdocs\php\task_test\app\Http\Controllers\ContactFormController.php:82
+    78|         $contact = ContactForm::find($id);
+    79|         dd($contact);
+    80| 
+    81|         return view('conact.show')
+  > 82|     };
+    83| 
+    84|     /**
+    85|      * Show the form for editing the specified resource.
+    86|      *
+
+  Exception trace:
+
+  1   Composer\Autoload\includeFile("C:\xampp\htdocs\php\task_test\vendor\composer/../../app/Http/Controllers/ContactFormController.php")
+      C:\xampp\htdocs\php\task_test\vendor\composer\ClassLoader.php:428
+
+  2   Composer\Autoload\ClassLoader::loadClass("App\Http\Controllers\ContactFormController")
+      [internal]:0
+
+  Please use the argument -v to see more details.
