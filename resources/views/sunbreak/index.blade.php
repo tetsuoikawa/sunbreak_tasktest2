@@ -33,8 +33,8 @@
                     
                     <form method="GET" action="{{ route('sunbreak.create') }}">
                         <button type="submit" class="btn btn-primary">
-                          新規登録
-                        </button>
+                          新規登
+                        </button> 
                 
                     </form>
                     <article>
