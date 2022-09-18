@@ -1,27 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>マイページ</title>
+</head>
+
+<body>
+</body>
 <link href="{{asset('css/index.css')}}" rel="stylesheet">
 @extends('layouts.app')
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="" />
     </div>
   </div>
 </div>
 @section('content')
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10" >
-
-
-
-          
+         
             <div class="card">
               <div style="text-align:center">
 
                <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1782859/69f8d57b-ffe4-2843-02ca-9665569fbab1.png" class="img-fluid"> 
-
               </div>
+              <Br>
+              <div class="row justify-content-center">
+                <div class="col-md-10" >
+                  <div class="pakuri">
+                    <?php
+                    $un = optional(Auth::user())->name;
+                    if( $un !== null){
+                      echo '
+                    <div><a href="">Topページ</a> &nbsp;|&nbsp;&nbsp;</div>
+                    <div><a href="sunbreak/create">新規投稿</a> &nbsp;|&nbsp;&nbsp;</div>
+                    <div><a href="./mypage"  onclick="sendPost(event)"> マイページ</a> &nbsp;|&nbsp;&nbsp;</div>
+                      ';
+                    }else{
+                      echo '
+                    <div><a href="">Topページ</a> &nbsp;|&nbsp;&nbsp;</div>
+                    <div><a href="sunbreak/create">新規投稿</a> &nbsp;|&nbsp;&nbsp;</div>
+                    <div><a href="/login">ログイン</a> &nbsp;|&nbsp;&nbsp;</div>
+                    <div><a href="/register">ユーザー登録</a></div>
+                      ';   
+                    };
+                    
+                    ?>
 
+                       
+                </div>
+                <form method="POST" action="{{route('sunbreak.mypage')}}" enctype="multipart/form-data">
+                  @csrf
+                  <input class="btn btn-outline-primary" type="submit" value="マイページ">
+                </form>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -29,12 +61,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <Br>
-                    
-                    <form method="GET" action="{{ route('sunbreak.create') }}">
-                        <button type="submit" class="btn btn-primary">
-                          新規登
-                        </button> 
+
+                      
                 
                     </form>
                     <article>
@@ -75,6 +103,7 @@
                               <option value="0">男性</option>
                               <option value="1">女性</option>
                             </select>
+                            
                             &nbsp;
                             <button type="submit" class="btn btn-primary">
                               絞り込む
@@ -93,10 +122,16 @@
                           <?php //<a href="#" class="btn btn-primary">{{ $sunbreak->contact}}</a>?>
 
                           <Br>
+                            <script>
+                            $ib = 1;
+                            </script>
                             <?php
                             $i = 0;
+                            $ib2 = 1;
                             ?>
                             @foreach($sunbreaks as $sunbreak)
+
+                            
 
 
 
@@ -108,21 +143,46 @@
                               <Br>
                             <div style="text-align: center;" >
                               <h4 class="card-title">{{ $sunbreak->title }}</h4>
+                              <p class="card-title">
+                                <?php
+                                if( optional($sunbreak)->username  !== null){
+                                  echo 'written by ' , optional($sunbreak)->username;
+                                }else{
+                                  echo 'written by 名無しのユーザー';
+                                };
+                                ?>
+                              </p>
                             
                               <Br>
-                              <img src = "{{ asset('storage/' . $sunbreak->photo) }}" class="card-img-top" alt="Wild Landscape" style="max-width: 80%;">
+                              <img src = "{{ asset('storage/' . $sunbreak->photo) }}" class="card-img-top" alt="Wild Landscape" style="max-width: 400px;" style="max-height:400px;" >
                             
                                 <div class="card-body">
                                 
                                   <p class="card-text">
                                     <div style="display: flex">
                                     
-                                  <div style="text-align:right">
+                                  <div style="text-align:left">
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?= $i ?>">
                                       詳細を見る
                                     </button>
                                   </div>
-                            
+                                
+
+                                    <?php 
+                                    $i2 = $sunbreak->id;
+                                    ?>
+                                    <div style="text-align:right">
+                                      <input type="checkbox" id=<?php echo "favorite" . $sunbreak->id;?> name="favorite-checkbox" value="favorite-button">
+                                        <label for=<?php echo "favorite" . $sunbreak->id;?> class="container">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                        <div class="action">
+                                           <span class="option-2">129</span>
+                                           <span class="option-1">128</span>
+                                        </div>
+                                        </label>
+                                      </div>
+
+
                                     <div class="modal fade" id="modal<?= $i ?>" tabindex="-1"
                                           role="dialog" aria-labelledby="label1" aria-hidden="true">
                                       <div class="modal-dialog" role="document">
@@ -141,22 +201,40 @@
                                   
                                           <div class="modal-body">
                                               
-                                              <img src = "{{ asset('storage/' . $sunbreak->photo) }}" class="card-img-top" alt="Wild Landscape"/>
+                                              <img src = "{{ asset('storage/' . $sunbreak->photo) }}" class="card-img-top" alt="Wild Landscape" style="max-width: 400px;" style="max-height:400px;"/>
                                               <Br>
                                               <Br>
-                                                <div class="card" style="width: 100%;">
-                                                  <ul class="list-group list-group-flush">
-                                                  <div style="text-align:left">
-                                                    <li class="list-group-item">武器名：　{{ $sunbreak->buki }}</li>
-                                                    <li class="list-group-item">頭装備：　{{ $sunbreak->soubi1 }}</li>
-                                                    <li class="list-group-item">肩装備：　{{ $sunbreak->soubi2 }}</li>
-                                                    <li class="list-group-item">腕装備：  {{ $sunbreak->soubi3 }}</li>
-                                                    <li class="list-group-item">腰装備：  {{ $sunbreak->soubi4 }}</li>
-                                                    <li class="list-group-item">足装備：  {{ $sunbreak->soubi5 }}</li>
-                                                  </div>
-                                                  </ul>
-                                                </div>
-                                                  <Br>
+                                                <Br>
+                                              <h5>装備詳細</h5>
+                                                <img src = "{{ asset('storage/' . $sunbreak->photo2) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
+                                              <Br>
+                                              <Br>
+                                                <hr>
+                                                <img src = "{{ asset('storage/' . $sunbreak->photo3) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
+                                              <Br>
+                                              <Br>
+                                                <Br>
+                                                <img src = "{{ asset('storage/' . $sunbreak->photo4) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
+                                              <Br>
+                                              <Br>
+                                                <Br>
+                                                <img src = "{{ asset('storage/' . $sunbreak->photo5) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
+                                              <Br>
+                                              <Br>
+                                                <Br>
+                                                <img src = "{{ asset('storage/' . $sunbreak->photo6) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
+                                              <Br>
+                                              <Br>   
+                                              <hr>
+                                              <?php
+                                              if( $sunbreak->photo2 !== null){
+
+                                              }  
+                                              ?>
+
+                                          
+
+
                                                 <div class="card w-100">
                                                   <div class="card-body">
                                                   <div style="text-align:left">
@@ -166,6 +244,41 @@
                                                   </div>
                                                </div>
                                                <Br>
+                                               <Br>
+                                                <h3>コメント欄</h3>
+                                                <Br>
+                                                <div class="form-outline">
+                                                  <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+                                                </div>
+                                               <Br>
+                                               <Br>
+                                                <a href="" class="btn btn-border">送信する</a>
+                                                <Br>
+                                                <Br>
+                                               <Br>
+                                            <div style="text-align:left">
+                                               <div class="card">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">コメント０</h5>
+                                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                </div>
+                                              </div>
+                                              <Br>
+
+                                                <div class="card">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">コメント１ </h5>
+                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                  </div>
+                                                </div>
+                                                <Br>
+                                                  <div class="card">
+                                                    <div class="card-body">
+                                                      <h5 class="card-title">コメント２</h5>
+                                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                  </div>
+                                             </div>
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

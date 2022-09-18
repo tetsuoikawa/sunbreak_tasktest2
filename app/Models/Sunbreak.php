@@ -9,6 +9,7 @@ class Sunbreak extends Model
   protected $fillable = [
       'id',
       'title',
+      'username',
       'buki',
       'soubi1',
       'soubi2',
@@ -19,5 +20,10 @@ class Sunbreak extends Model
       'contact',
       'series',
       'photo',
+      'photo2',
+      'photo3',
+      'photo4',
+      'photo5',
+      'photo6',
   ];
 }
