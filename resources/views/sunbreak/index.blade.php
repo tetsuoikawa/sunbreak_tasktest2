@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>マイページ</title>
+  <title>マイページ </title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                       echo '
                     <div><a href="">Topページ</a> &nbsp;|&nbsp;&nbsp;</div>
                     <div><a href="sunbreak/create">新規投稿</a> &nbsp;|&nbsp;&nbsp;</div>
-                    <div><a href="./mypage"  onclick="sendPost(event)"> マイページ</a> &nbsp;|&nbsp;&nbsp;</div>
+                    <div><a href="sunbreak/mypage"  onclick="sendPost(event)"> マイページ</a> &nbsp;|&nbsp;&nbsp;</div>
                       ';
                     }else{
                       echo '
@@ -43,17 +43,23 @@
                     <div><a href="sunbreak/create">新規投稿</a> &nbsp;|&nbsp;&nbsp;</div>
                     <div><a href="/login">ログイン</a> &nbsp;|&nbsp;&nbsp;</div>
                     <div><a href="/register">ユーザー登録</a></div>
+                    
                       ';   
                     };
                     
                     ?>
-
-                       
+                    <Br>
+                      <Br>
                 </div>
-                <form method="POST" action="{{route('sunbreak.mypage')}}" enctype="multipart/form-data">
-                  @csrf
-                  <input class="btn btn-outline-primary" type="submit" value="マイページ">
-                </form>
+                <?php
+                echo'
+                 <form method="POST" action="{{route("sunbreak.mypage")}}" enctype="multipart/form-data">
+                 @csrf
+                 <input class="btn btn-outline-primary" type="submit" value="マイページ">
+                 </form>'
+               ?>
+                  
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -123,7 +129,13 @@
 
                           <Br>
                             <script>
-                            $ib = 1;
+                            var ib = 1;
+                            vrgabhuaekbIIIIIIalbum = 1;//window.aの略
+                            vrgabhuaekbmainImage = 1;//window.aの略
+                            vrgabhuaekbIIIIIImainFlame = 1;//window.aの略
+                            vrgabhuaekbIIIIIIthumbFlame = 1;//window.aの略
+                            vrgabhuaekbIIIIIIthumbImage = 1;//window.aの略
+                            vrgabhuaekbIIIIIIform = 1;//window.aの略
                             </script>
                             <?php
                             $i = 0;
@@ -200,6 +212,75 @@
 
                                   
                                           <div class="modal-body">
+                                            <?php  echo 'gallery' . $ib2  ?>
+                                            <div id=<?php  echo "gallery" . $ib2  ?>>
+                                              <?php  echo 'main' . $ib2  ?>
+                                              <div class=<?php  echo "main" . $ib2  ?>>
+                                              </div>
+                                              <?php  echo 'thumb' . $ib2  ?>
+                                              <div class=<?php  echo "thumb" . $ib2  ?>>
+                                              </div>
+                                          </div>
+                                          <Br>
+                                          <Br>
+                                          <script>
+                                           
+                                            window[`album${vrgabhuaekbIIIIIIalbum}`] = `album${ib}`;
+                                            window[`mainImage${vrgabhuaekbmainImage}`] = `mainImage${ib}`;
+                                            window[`mainFlame${vrgabhuaekbIIIIIImainFlame}`] = `mainFlame${ib}`;
+                                            window[`thumbFlam${vrgabhuaekbIIIIIIthumbFlame}`] = `thumbFlame${ib}`;
+                                            window[`thumbImage${vrgabhuaekbIIIIIIthumbImage}`] = `thumbImage${ib}`;
+                                            window[`form${vrgabhuaekbIIIIIIform}`] = `form${ib}`;
+                                            console.log(form3);//window.test1の略
+
+                             
+
+                                          
+                                              //表示する画像
+                                              window[`album${vrgabhuaekbIIIIIIalbum}`] = [
+                                              { src: 'https://www.bing.com/th?id=OIP.LpFjBXLTcq2qMURWTdI1HgHaE8&w=200&h=133&rs=1&qlt=80&o=6&dpr=1.5&pid=3.1'},
+                                              { src: 'https://th.bing.com/th/id/OIP.bT48HdFiAfFS8fTHz1VXagHaE6?w=203&h=134&c=7&r=0&o=5&dpr=1.5&pid=1.7'},
+                                              { src: 'https://th.bing.com/th/id/OIP.G31UnHQnkw_-Zqz9n6zrHwHaHa?w=186&h=186&c=7&r=0&o=5&dpr=1.5&pid=1.7'},
+                                              { src: 'https://th.bing.com/th/id/OIP._hNRGLVvQKNpVG0rt4ZyOQHaGI?w=186&h=154&c=7&r=0&o=5&dpr=1.5&pid=1.7'},
+                                              { src: 'https://th.bing.com/th/id/OIP.RCWeSNGE2ALao-Q7szWiXwHaEK?w=186&h=104&c=7&r=0&o=5&dpr=1.5&pid=1.7'}
+                                            ];
+                                            // 最初のデータを表示しておく
+                                            window[`mainImage${vrgabhuaekbmainImage}`] = document.createElement('img');
+                                            //画像部分を持ってくる
+                                            mainImage1.setAttribute('src', album1[0].src);
+                                            
+                                            
+                                            
+                                            window[`mainFlame${vrgabhuaekbIIIIIImainFlame}`] = document.querySelector('#gallery1 .main1');
+                                            mainFlame1.insertBefore(mainImage1, null);
+                                            
+                                            // サムネイル画像の表示
+                                            window[`thumbFlam${vrgabhuaekbIIIIIIthumbFlame}`] = document.querySelector('#gallery1 .thumb1');
+                                            for (var i = 0; i < album1.length; i++) {
+                                              window[`thumbImage${vrgabhuaekbIIIIIIthumbImage}`] = document.createElement('img');
+                                              thumbImage1.setAttribute('src', album1[i].src);
+                                              thumbFlame1.insertBefore(thumbImage1, null);
+                                            }
+                                            
+                                            // クリックした画像をメインにする
+                                            thumbFlame1.addEventListener('click', function(event1) {
+                                              if (event1.target.src) {
+                                                mainImage1.src = event1.target.src;
+                                            
+                                              }
+                                            });
+                                            
+                                            function sendPost(event1) {
+                                              event1.preventDefault();
+                                              window[`form${vrgabhuaekbIIIIIIform}`] = document.createElement('form1');
+                                              form1.action = event1.target.href;
+                                              form1.method = 'post';
+                                              document.body.appendChild(form1);
+                                              form2.submit();
+                                            }
+                                          </script>
+                                          <?php $ib2 += 1 ?> 
+                                          
                                               
                                               <img src = "{{ asset('storage/' . $sunbreak->photo) }}" class="card-img-top" alt="Wild Landscape" style="max-width: 400px;" style="max-height:400px;"/>
                                               <Br>
