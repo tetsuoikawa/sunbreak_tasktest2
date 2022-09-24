@@ -37,6 +37,11 @@ class StoreSunBreak extends FormRequest
             'gender' => 'required',
             'contact' => 'string|max:200|nullable',
             'photo' => 'required|image',
+            'photo2' => 'required|image',
+            'photo3' => 'required|image|nullable',
+            'photo4' => 'required|image|nullable',
+            'photo5' => 'required|image|nullable',
+            'photo6' => 'required|image|nullable',
         ];
     }
 }

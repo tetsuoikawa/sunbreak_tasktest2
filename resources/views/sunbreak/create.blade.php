@@ -1,10 +1,37 @@
+<link href="{{asset('css/index.css')}}" rel="stylesheet">
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
+              <div style="text-align:center">
+
+                <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1782859/69f8d57b-ffe4-2843-02ca-9665569fbab1.png" class="img-fluid"> 
+               </div>
+               <Br>
+               <div class="row justify-content-center">
+                 <div class="col-md-10" >
+                   <div class="pakuri">
+                     <div><a href="{{ route('sunbreak.index') }}">{{ __('Top') }}</a> &nbsp;|&nbsp;&nbsp;</div>
+                     <div><a href="{{ route('sunbreak.create') }}">{{ __('新規投稿') }}</a> &nbsp;|&nbsp;&nbsp;</div>
+                  <div><a href="{{ route('login') }}">{{ __('ログイン') }}</a> &nbsp;|&nbsp;&nbsp;</div>
+                     <div><a href="{{ route('register') }}">{{ __('ユーザー登録') }}</a></div>
+                     </form>
+                        
+                </div>
+                <Br>
+ 
+                 <div class="card-body">
+                     @if (session('status'))
+                         <div class="alert alert-success" role="alert">
+                             {{ session('status') }}
+                         </div>
+                     @endif
+ 
+                       
+                 
+                     </form>
                 <div class="card-header">投稿フォーム</div>
 
                 <div class="card-body">
@@ -42,8 +69,15 @@
                     <form method="POST" action="{{route('sunbreak.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example" name="series"> 
 
+                  </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">タイトル</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput"   value="{{ old('title') }}" name="title">
+                      </div>
+                      
+                    <br>
+                    <select class="custom-select" id="inputGroupSelect01" name="series">
                       <option>シリーズ選択</option>
                       <option value="2" @if(2 === (int)old('series')) selected @endif>サンブレイク</option>
                       <option value="3" @if(3 === (int)old('series')) selected @endif>ライズ</option>
@@ -63,67 +97,174 @@
                       <option value="17" @if(17 === (int)old('series')) selected @endif>G</option>
                       <option value="18" @if(18 === (int)old('series')) selected @endif>初代</option>
                     </select>
-                  </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">タイトル</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"  value="{{ old('title') }}" name="title">
-                      </div>
-                    <br>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">武器名</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"  value="{{ old('buki') }}" name="buki">
-                      </div>
-                    <br>
-                    <div class="mb-3">
-                      <label for="formGroupExampleInput" class="form-label">頭装備</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput"  value="{{ old('soubi1') }}" name="soubi1">
-                    </div>
-                  <br>
-                  <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">肩装備</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput"  value="{{ old('soubi2') }}" name="soubi2">
-                  </div>
-                <br>
-                <div class="mb-3">
-                  <label for="formGroupExampleInput" class="form-label">腕装備</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput" value="{{ old('soubi3') }}"  name="soubi3">
-                </div>
-              <br>
-              <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">腰装備</label>
-                <input type="text" class="form-control" id="formGroupExampleInput"  value="{{ old('soubi4') }}" name="soubi4">
-              </div>
-            <br>
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label" >足装備</label>
-              <input type="text" class="form-control" id="formGroupExampleInput"  value="{{ old('soubi5') }}" name="soubi5">
-              <input type="hidden" class="form-control" id="formGroupExampleInput" name="soubi5-1" >
-            </div>
           <br>
+          <Br>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label" >説明文</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{ old('contact') }}" name="contact">{{ old('contact') }}</textarea>
           </div>
           <Br>
-            <p>ハンターの性別
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="0" >
-                <label class="form-check-label" for="flexRadioDefault1">
-                  男性
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="1">
-                <label class="form-check-label" for="flexRadioDefault2">
-                  女性
-                </label>
-              </div>
-                    <br>
-                    <div class="form-group">
-                      <label for="inputFile">File input</label>
-                      <input type="file" class="form-control-file" id="inputFile" name="photo">
+            <p>ハンターの性別</p>
+                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="gender" id="flexRadioDefault1" value="0" autocomplete="off"> 男性
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="gender" id="flexRadioDefault2" value="1" autocomplete="off"> 女性
+                        </label>
+                      </div>
+                    <Br>
+                    <Br>
+                    <Br>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-text">装備画像</h5>
+                      </div>
+                      <img src="../storage/img/IMG_0205.JPG" class="card-img-top" alt="Fissure in Sandstone"/>
+                      <div class="card-body">
+                        <h5 class="card-text">こんな感じで、装備名がわかる画像を選択してください</h5>
+                        <div class="form-group">
+                          <label for="inputFile"></label>
+                          <input type="file" class="form-control-file" id="inputFile" name="photo" accept='image/*' onchange="previewImage1(this);">
+                          <p>
+                          Preview:<br>
+                          <img id="preview1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                          </p>
+                          <script>
+                          function previewImage1(obj)
+                          {
+                            var fileReader = new FileReader();
+                            fileReader.onload = (function() {
+                              document.getElementById('preview1').src = fileReader.result;
+                            });
+                            fileReader.readAsDataURL(obj.files[0]);
+                          }
+                          </script>
+                        </div>
+                      </div>
                     </div>
 
+                    <Br>
+                      <Br>
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-text">TOP画像</h5>
+                        </div>
+
+                        <div class="card-body">
+
+                          <div class="form-group">
+                            <label for="inputFile"></label>
+                            <input type="file" class="form-control-file" id="inputFile2" name="photo2" accept='image/*' onchange="previewImage2(this);">
+                            <p>
+                            Preview:<br>
+                            <img id="preview2" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                            </p>
+                            <script>
+                            function previewImage2(obj)
+                            {
+                              var fileReader = new FileReader();
+                              fileReader.onload = (function() {
+                                document.getElementById('preview2').src = fileReader.result;
+                              });
+                              fileReader.readAsDataURL(obj.files[0]);
+                            }
+                            </script>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-text">サブ画像(４枚まで)</h5>
+                          <div class="form-group">
+                            <label for="inputFile"></label>
+                            <input type="file" class="form-control-file" id="inputFile3" name="photo3" accept='image/*' onchange="previewImage3(this);">
+                            <p>
+                            Preview:<br>
+                            <img id="preview3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                            </p>
+                            <script>
+                            function previewImage3(obj)
+                            {
+                              var fileReader = new FileReader();
+                              fileReader.onload = (function() {
+                                document.getElementById('preview3').src = fileReader.result;
+                              });
+                              fileReader.readAsDataURL(obj.files[0]);
+                            }
+                            </script>
+                          </div>
+      
+      
+                          <div class="form-group">
+                            <label for="inputFile"></label>
+                            <input type="file" class="form-control-file" id="inputFile4" name="photo4" accept='image/*' onchange="previewImage4(this);">
+                            <p>
+                            Preview:<br>
+                            <img id="preview4" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                            </p>
+                            <script>
+                            function previewImage4(obj)
+                            {
+                              var fileReader = new FileReader();
+                              fileReader.onload = (function() {
+                                document.getElementById('preview4').src = fileReader.result;
+                              });
+                              fileReader.readAsDataURL(obj.files[0]);
+                            }
+                            </script>
+                          </div>
+      
+      
+                          <div class="form-group">
+                            <label for="inputFile"></label>
+                            <input type="file" class="form-control-file" id="inputFile5" name="photo5" accept='image/*' onchange="previewImage5(this);">
+                            <p>
+                            Preview:<br>
+                            <img id="preview5" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                            </p>
+                            <script>
+                            function previewImage5(obj)
+                            {
+                              var fileReader = new FileReader();
+                              fileReader.onload = (function() {
+                                document.getElementById('preview5').src = fileReader.result;
+                              });
+                              fileReader.readAsDataURL(obj.files[0]);
+                            }
+                            </script>
+                          </div>
+      
+      
+                          <div class="form-group">
+                            <label for="inputFile"></label>
+                            <input type="file" class="form-control-file" id="inputFile6" name="photo6" accept='image/*' onchange="previewImage6(this);">
+                            <p>
+                            Preview:<br>
+                            <img id="preview6" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                            </p>
+                            <script>
+                            function previewImage6(obj)
+                            {
+                              var fileReader = new FileReader();
+                              fileReader.onload = (function() {
+                                document.getElementById('preview6').src = fileReader.result;
+                              });
+                              fileReader.readAsDataURL(obj.files[0]);
+                            }
+                            </script>
+                          </div>
+                        </div>
+                        
+                      </div>
+
+
+
+
+
+                  
+
+
+                 
+                    <input type="hidden" value="{{  optional(Auth::user())->name }}" name="username">
                     <Br>
                       <Br>
                     <input class="btn btn-outline-primary" type="submit" value="登録する">

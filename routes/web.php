@@ -64,7 +64,11 @@ Route::group(['prefix' => 'sunbreak'], function(){
     Route::get('index2','SunBreakController@index2')->name('sunbreak.index2');
     Route::get('edit/{id}', 'SunBreakController@edit')->name('sunbreak.edit'); 
     Route::post('update/{id}', 'SunBreakController@update')->name('sunbreak.update'); 
-    Route::post('destroy/{id}', 'SunBreakController@destroy')->name('sunbreak.destroy'); 
+    Route::post('destroy/{id}', 'SunBreakController@destroy')->name('sunbreak.destroy');
+    Route::get('test','SunBreakController@test')->name('sunbreak.test'); 
+    Route::post('mypage','SunBreakController@mypage')->name('sunbreak.mypage'); 
+    
+    
 
     //表示される人のIDで判断したいから、show/{id}になる。
     //Route::get('show/{id}','SunBreakController@show')->name('sunbreak.show'); 
@@ -73,8 +77,7 @@ Route::group(['prefix' => 'sunbreak'], function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'SunBreakController@index')->name('sunbreak.index');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
