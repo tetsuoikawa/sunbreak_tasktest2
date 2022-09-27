@@ -128,16 +128,14 @@
                           <?php //<a href="#" class="btn btn-primary">{{ $sunbreak->contact}}</a>?>
 
                           <Br>
-                            <script>
-                            var ib = 1;
-                            vrgabhuaekbIIIIIIalbum = 1;//window.aの略
-                            vrgabhuaekbmainImage = 1;//window.aの略
-                            vrgabhuaekbIIIIIImainFlame = 1;//window.aの略
-                            vrgabhuaekbIIIIIIthumbFlame = 1;//window.aの略
-                            vrgabhuaekbIIIIIIthumbImage = 1;//window.aの略
-                            vrgabhuaekbIIIIIIform = 1;//window.aの略
-                            </script>
                             <?php
+                            $gallery2 = "'#gallery";
+                            $main2 = ".main";
+                            $thumb2 = ".thumb";
+                            $count1  = 1;
+                            $vacuum = " ";
+                            $line = "'";
+
                             $i = 0;
                             $ib2 = 1;
                             ?>
@@ -207,104 +205,112 @@
                                           </div>
 
 
-
-
-
                                   
-                                          <div class="modal-body">
-                                            <?php  echo 'gallery' . $ib2  ?>
-                                            <div id=<?php  echo "gallery" . $ib2  ?>>
-                                              <?php  echo 'main' . $ib2  ?>
-                                              <div class=<?php  echo "main" . $ib2  ?>>
-                                              </div>
-                                              <?php  echo 'thumb' . $ib2  ?>
-                                              <div class=<?php  echo "thumb" . $ib2  ?>>
-                                              </div>
-                                          </div>
-                                          <Br>
-                                          <Br>
-                                          <script>
-                                           
-                                            window[`album${vrgabhuaekbIIIIIIalbum}`] = `album${ib}`;
-                                            window[`mainImage${vrgabhuaekbmainImage}`] = `mainImage${ib}`;
-                                            window[`mainFlame${vrgabhuaekbIIIIIImainFlame}`] = `mainFlame${ib}`;
-                                            window[`thumbFlam${vrgabhuaekbIIIIIIthumbFlame}`] = `thumbFlame${ib}`;
-                                            window[`thumbImage${vrgabhuaekbIIIIIIthumbImage}`] = `thumbImage${ib}`;
-                                            window[`form${vrgabhuaekbIIIIIIform}`] = `form${ib}`;
-                                            console.log(form3);//window.test1の略
-
-                             
-
                                           
-                                              //表示する画像
-                                              window[`album${vrgabhuaekbIIIIIIalbum}`] = [
-                                              { src: 'https://www.bing.com/th?id=OIP.LpFjBXLTcq2qMURWTdI1HgHaE8&w=200&h=133&rs=1&qlt=80&o=6&dpr=1.5&pid=3.1'},
-                                              { src: 'https://th.bing.com/th/id/OIP.bT48HdFiAfFS8fTHz1VXagHaE6?w=203&h=134&c=7&r=0&o=5&dpr=1.5&pid=1.7'},
-                                              { src: 'https://th.bing.com/th/id/OIP.G31UnHQnkw_-Zqz9n6zrHwHaHa?w=186&h=186&c=7&r=0&o=5&dpr=1.5&pid=1.7'},
-                                              { src: 'https://th.bing.com/th/id/OIP._hNRGLVvQKNpVG0rt4ZyOQHaGI?w=186&h=154&c=7&r=0&o=5&dpr=1.5&pid=1.7'},
-                                              { src: 'https://th.bing.com/th/id/OIP.RCWeSNGE2ALao-Q7szWiXwHaEK?w=186&h=104&c=7&r=0&o=5&dpr=1.5&pid=1.7'}
-                                            ];
-                                            // 最初のデータを表示しておく
-                                            window[`mainImage${vrgabhuaekbmainImage}`] = document.createElement('img');
-                                            //画像部分を持ってくる
-                                            mainImage1.setAttribute('src', album1[0].src);
+                                            <?php
+                                            $a = 1;
+
                                             
+                                                $gallery = $line . "gallery" . $count1 . $line;
+                                                $main = $line . "main" . $count1 . $line;
+                                                $thumb = $line . "thumb" . $count1 . $line;
+                                                
+                                                $gallery_main = $gallery2 . $count1 . $vacuum . $main2 . $count1 . $line;
+                                                $gallery_thumb = $gallery2 . $count1 . $vacuum . $thumb2 . $count1 . $line;
+                                                $form_mk2 = $line . "form" . $count1 . $line;
                                             
-                                            
-                                            window[`mainFlame${vrgabhuaekbIIIIIImainFlame}`] = document.querySelector('#gallery1 .main1');
-                                            mainFlame1.insertBefore(mainImage1, null);
-                                            
-                                            // サムネイル画像の表示
-                                            window[`thumbFlam${vrgabhuaekbIIIIIIthumbFlame}`] = document.querySelector('#gallery1 .thumb1');
-                                            for (var i = 0; i < album1.length; i++) {
-                                              window[`thumbImage${vrgabhuaekbIIIIIIthumbImage}`] = document.createElement('img');
-                                              thumbImage1.setAttribute('src', album1[i].src);
-                                              thumbFlame1.insertBefore(thumbImage1, null);
-                                            }
-                                            
-                                            // クリックした画像をメインにする
-                                            thumbFlame1.addEventListener('click', function(event1) {
-                                              if (event1.target.src) {
-                                                mainImage1.src = event1.target.src;
-                                            
-                                              }
-                                            });
-                                            
-                                            function sendPost(event1) {
-                                              event1.preventDefault();
-                                              window[`form${vrgabhuaekbIIIIIIform}`] = document.createElement('form1');
-                                              form1.action = event1.target.href;
-                                              form1.method = 'post';
-                                              document.body.appendChild(form1);
-                                              form2.submit();
-                                            }
-                                          </script>
-                                          <?php $ib2 += 1 ?> 
-                                          
+                                                $album = "album" . $count1;
+                                                $mainImage = "mainImage" . $count1;
+                                                $mainFlame = "mainFlame" . $count1;
+                                                $thumbFlame = "thumbFlame" . $count1;
+                                                $thumbImage = "thumbImage" . $count1;
+                                                $event = "event" . $count1;
+                                                $form = "form" . $count1;
+                                                $method = "method" . $count1;
                                               
-                                              <img src = "{{ asset('storage/' . $sunbreak->photo) }}" class="card-img-top" alt="Wild Landscape" style="max-width: 400px;" style="max-height:400px;"/>
+                                                ?>
+                                            
+
                                               <Br>
-                                              <Br>
-                                                <Br>
-                                              <h5>装備詳細</h5>
-                                                <img src = "{{ asset('storage/' . $sunbreak->photo2) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
-                                              <Br>
-                                              <Br>
-                                                <hr>
-                                                <img src = "{{ asset('storage/' . $sunbreak->photo3) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
-                                              <Br>
-                                              <Br>
-                                                <Br>
-                                                <img src = "{{ asset('storage/' . $sunbreak->photo4) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
-                                              <Br>
-                                              <Br>
-                                                <Br>
-                                                <img src = "{{ asset('storage/' . $sunbreak->photo5) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
-                                              <Br>
-                                              <Br>
-                                                <Br>
-                                                <img src = "{{ asset('storage/' . $sunbreak->photo6) }}" class="card-img-top" alt="" style="max-width: 400px;" style="max-height:400px;"/>
-                                              <Br>
+                                                  <div id= <?php  echo $gallery; ?>>
+                                                      <div class= <?php  echo $main; ?> >
+                                                      </div>
+                                                      <div class= <?php  echo $thumb; ?>>
+                                                      </div>
+                                                  </div>
+                                              
+                                              
+                                            <script>
+                                            //$gallery_main = $gallery2 . $count1 . $vacuum . $main2 . $count1 . $line;
+                                            
+                                            //$album = "album" . $count1;
+                                            //$mainImage = "mainImage" . $count1;
+                                            //$mainFlame = "mainFlame" . $count1;
+                                            //$thumbFlame = "thumbFlame" . $count1;
+                                            //$thumbImage = "thumbImage" . $count1;
+                                            //$event = "event" . $count1;
+                                            //$form = "form" . $count1;
+                                            //$method = "method" . $count1;
+                                            
+                                            
+                                              
+                                              
+                                                      //表示する画像
+                                                  
+                                                  var <?php  echo $album; ?> = [
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo2) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo3) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo4) }}'},
+                                                    ];
+                                                    
+                                                    // 最初のデータを表示しておく
+                                                     var <?php  echo $mainImage; ?> = document.createElement('img');
+                                                    //画像部分を持ってくる
+                                                    <?php  echo $mainImage; ?>.setAttribute('src', <?php  echo $album; ?>[0].src);
+                                                    
+                                                    
+                                                    
+                                                    var <?php  echo $mainFlame; ?> = document.querySelector(<?php  echo $gallery_main; ?>);
+                                                    <?php  echo $mainFlame; ?>.insertBefore(<?php  echo $mainImage; ?>, null);
+                                                    
+                                                    // サムネイル画像の表示
+                                                    
+                                                    var <?php  echo $thumbFlame; ?> = document.querySelector(<?php  echo $gallery_thumb; ?>);
+                                                    for (var i = 0; i < <?php  echo $album; ?>.length; i++) {
+                                                      var <?php  echo $thumbImage; ?> = document.createElement('img');
+                                                      <?php  echo $thumbImage; ?>.setAttribute('src', <?php  echo $album; ?>[i].src);
+                                                      <?php  echo $thumbFlame; ?>.insertBefore(<?php  echo $thumbImage; ?>, null);
+                                                    }
+                                                    
+                                                    // クリックした画像をメインにする
+                                                    <?php  echo $thumbFlame; ?>.addEventListener('click', function(<?php  echo $event; ?>) {
+                                                      if (<?php  echo $event; ?>.target.src) {
+                                                        <?php  echo $mainImage; ?>.src = <?php  echo $event; ?>.target.src;
+                                                    
+                                                      }
+                                                    });
+                                                    
+                                                    function sendPost(<?php  echo $event; ?>) {
+                                                      <?php  echo $event; ?>.preventDefault();
+                                                      var <?php  echo $form; ?> = document.createElement(<?php  echo $form_mk2; ?>);
+                                                      <?php  echo $form; ?>.action = <?php  echo $event; ?>.target.href;
+                                                      <?php  echo $form; ?>.<?php  echo $method; ?> = 'post';
+                                                      document.body.appendChild(<?php  echo $form; ?>);
+                                                      <?php  echo $form; ?>.submit();
+                                                    }
+                                                    <?php  
+                                                    $count1 += 1;
+                                            
+                                                     ?>
+                                              </script>
+                                              <div class="modal-body">
+                                            
+                                            <Br>
+                                            <Br>
+                                            
+
+
                                               <Br>   
                                               <hr>
                                               <?php
@@ -391,8 +397,18 @@
              </div>
             </div>
         </div>
+
+        <?php
+echo "$sunbreak->photo";
+echo "{ src: '{{ asset('storage/' . $sunbreak->photo2) }}'}";
+?>
     </div>
+
 </div>
+
+
+
+
 </section>
 </article>
 @endsection
