@@ -10,6 +10,8 @@
 </body>
 <link href="{{asset('css/index.css')}}" rel="stylesheet">
 
+
+
 <?php
 
 $gallery2 = "'#gallery";
