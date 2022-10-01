@@ -43,7 +43,6 @@
                     <div><a href="sunbreak/create">新規投稿</a> &nbsp;|&nbsp;&nbsp;</div>
                     <div><a href="/login">ログイン</a> &nbsp;|&nbsp;&nbsp;</div>
                     <div><a href="/register">ユーザー登録</a></div>
-                    
                       ';   
                     };
                     
@@ -192,10 +191,10 @@
                                         </label>
                                       </div>
 
-
+                                      
                                     <div class="modal fade" id="modal<?= $i ?>" tabindex="-1"
                                           role="dialog" aria-labelledby="label1" aria-hidden="true">
-                                      <div class="modal-dialog" role="document">
+                                      <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                           <div class="modal-header">
                                             <h5 class="modal-title" id="label1">{{ $sunbreak->id }} {{ $sunbreak->title }}</h5>
@@ -239,7 +238,7 @@
                                                       </div>
                                                   </div>
                                               
-                                              
+
                                             <script>
                                             //$gallery_main = $gallery2 . $count1 . $vacuum . $main2 . $count1 . $line;
                                             
@@ -253,16 +252,70 @@
                                             //$method = "method" . $count1;
                                             
                                             
-                                              
-                                              
+                                   
+
+
                                                       //表示する画像
-                                                  
-                                                  var <?php  echo $album; ?> = [
+                                                    var picture_1 = '{{ ($sunbreak->photo) }}';
+                                                    var picture_2 = '{{ ($sunbreak->photo2) }}';
+                                                    var picture_3 = '{{ ($sunbreak->photo3) }}';
+                                                    var picture_4 = '{{ ($sunbreak->photo4) }}';
+                                                    var picture_5 = '{{ ($sunbreak->photo5) }}';
+                                                    var picture_6 = '{{ ($sunbreak->photo6) }}';
+                                                    var kara = '';
+                                                    console.log(picture_6);
+                                                    var g = 1;
+
+                                                    if(picture_1 !== kara ){
+                                                      var <?php  echo $album; ?> = [
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo) }}'}
+                                                    ];
+                                                    };
+
+                                                    if(picture_1 !== kara && picture_2 !== kara && picture_3 !== kara){
+                                                      var <?php  echo $album; ?> = [
                                                       { src: '{{ asset('storage/' . $sunbreak->photo) }}'},
-                                                      { src: '{{ asset('storage/' . $sunbreak->photo2) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo3) }}'}
+                                                    ];
+                                                    };
+
+                                                    if(picture_1 !== kara && picture_2 !== kara && picture_3 !== kara && picture_4 !== kara){
+                                                      var <?php  echo $album; ?> = [
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo3) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo4) }}'}
+                                                    ];
+                                                    };
+
+                                                    if(picture_1 !== kara && picture_2 !== kara && picture_3 !== kara && picture_4 !== kara && picture_5 !== kara){
+                                                      var <?php  echo $album; ?> = [
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo) }}'},
                                                       { src: '{{ asset('storage/' . $sunbreak->photo3) }}'},
                                                       { src: '{{ asset('storage/' . $sunbreak->photo4) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo5) }}'}
                                                     ];
+                                                    };
+
+                                                    
+                                                    if(picture_1 !== kara && picture_2 !== kara && picture_3 !== kara && picture_4 !== kara && picture_5 !== kara && picture_6 !== kara){
+                                                      var <?php  echo $album; ?> = [
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo3) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo4) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo5) }}'},
+                                                      { src: '{{ asset('storage/' . $sunbreak->photo6) }}'}
+                                                    ];
+                                                    };
+
+
+
+
+
+
+
+
+
+
                                                     
                                                     // 最初のデータを表示しておく
                                                      var <?php  echo $mainImage; ?> = document.createElement('img');
@@ -303,8 +356,8 @@
                                                     $count1 += 1;
                                             
                                                      ?>
-                                              </script>
-                                              <div class="modal-body">
+                                            </script>
+                                            <div class="modal-body">
                                             
                                             <Br>
                                             <Br>
@@ -318,6 +371,10 @@
 
                                               }  
                                               ?>
+
+                                              <Br>
+                                              <h4>装備詳細</h4>
+
 
                                           
 
@@ -398,10 +455,7 @@
             </div>
         </div>
 
-        <?php
-echo "$sunbreak->photo";
-echo "{ src: '{{ asset('storage/' . $sunbreak->photo2) }}'}";
-?>
+
     </div>
 
 </div>
