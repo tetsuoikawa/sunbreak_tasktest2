@@ -13,13 +13,43 @@
                <div class="row justify-content-center">
                  <div class="col-md-10" >
                    <div class="pakuri">
-                     <div><a href="{{ route('sunbreak.index') }}">{{ __('Top') }}</a> &nbsp;|&nbsp;&nbsp;</div>
-                     <div><a href="{{ route('sunbreak.create') }}">{{ __('新規投稿') }}</a> &nbsp;|&nbsp;&nbsp;</div>
-                  <div><a href="{{ route('login') }}">{{ __('ログイン') }}</a> &nbsp;|&nbsp;&nbsp;</div>
-                     <div><a href="{{ route('register') }}">{{ __('ユーザー登録') }}</a></div>
-                     </form>
-                        
-                </div>
+
+                    <form method="GET" name="form2" id="head_mypage" action="{{route('sunbreak.index')}}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="sunbreak" value="TOPページ">
+                      <a href="javascript:form2.submit()">TOPページ</a>&nbsp;|&nbsp;&nbsp;
+                    </form>
+
+                    <div><a href="">新規投稿</a>&nbsp;|&nbsp;&nbsp;</div>
+                    <div id="head_login"><a href="/login">ログイン</a>&nbsp;|&nbsp;&nbsp; </div>
+                    <div id="head_register"><a href="/register">ユーザー登録</a></div>
+
+                    <form method="POST" name="form1" id="head_mypage" action="{{route('sunbreak.mypage')}}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="user_name" value="名前">
+                      <a href="javascript:form1.submit()">マイページ</a>
+                    </form>
+
+
+
+                    <?php
+                    $un = optional(Auth::user())->name;
+                    ?>
+
+                    <script>
+                       var ert = '<?php echo $un;  ?>';
+
+                      if(ert !== ''){
+                        head_login.style.display = 'none';
+                        head_register.style.display = 'none';
+                      }
+
+                      if(ert == ''){                    
+                        head_mypage.style.display = 'none';
+                      }
+                    </script>
+              </div>
+
                 <Br>
  
                  <div class="card-body">
@@ -77,9 +107,9 @@
                       </div>
                       
                     <br>
-                    <select class="custom-select" id="inputGroupSelect01" name="series">
+                    <select class="custom-select custom-select-lg" id="inputGroupSelect01" name="series">
                       <option>シリーズ選択</option>
-                      <option value="2" @if(2 === (int)old('series')) selected @endif>サンブレイク</option>
+                      <option value="2" @if(2 === (int)old('series')) selected @endif style="margin-bottom: 50px;">サンブレイク</option>
                       <option value="3" @if(3 === (int)old('series')) selected @endif>ライズ</option>
                       <option value="4" @if(4 === (int)old('series')) selected @endif>アイスボーン</option>
                       <option value="5" @if(5 === (int)old('series')) selected @endif>ワールド</option>

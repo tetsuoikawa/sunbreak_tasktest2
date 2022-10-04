@@ -11,6 +11,70 @@
 <link href="{{asset('css/index.css')}}" rel="stylesheet">
 
 
+@extends('layouts.app')
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    </div>
+  </div>
+</div>
+@section('content')
+
+<div class="container">
+         
+            <div class="card">
+              <div style="text-align:center">
+
+               <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1782859/69f8d57b-ffe4-2843-02ca-9665569fbab1.png" class="img-fluid"> 
+              </div>
+              <Br>
+              <div class="row justify-content-center">
+                <div class="col-md-10" >
+                  <div class="pakuri">
+                    <div><a style="textde: black;">Topページ</a>&nbsp;|&nbsp;&nbsp; </div>
+                    <div><a href="sunbreak/create">新規投稿</a>&nbsp;|&nbsp;&nbsp;</div>
+                    <div id="head_login"><a href="/login">ログイン</a>&nbsp;|&nbsp;&nbsp; </div>
+                    <div id="head_register"><a href="/register">ユーザー登録</a></div>
+
+                    <form method="POST" name="form1" id="head_mypage" action="{{route('sunbreak.mypage')}}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="user_name" value="名前">
+                      <a href="javascript:form1.submit()">マイページ</a>
+                    </form>
+
+                    <?php
+                    $un = optional(Auth::user())->name;
+                    ?>
+                    <script>
+                       var ert = '<?php echo $un;  ?>';
+                       console.log(ert);  
+                      if(ert !== ''){
+                        head_login.style.display = 'none';
+                        head_register.style.display = 'none';
+                      }
+
+                      if(ert == ''){                    
+                        head_mypage.style.display = 'none';
+                      }
+                    </script>
+
+                
+
+              </div>
+
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                      
+                
+                    </form>
+
+
 
 <?php
 
