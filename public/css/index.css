@@ -1,8 +1,26 @@
+h3{
+  display: block;
+}
+.select{
+  font-size: 500px;
+}
 .modal-content{
   background-color: aqua;
 }
 .btn3{
     text-align: center;
+}
+
+#fewleft{
+  margin-left: 2.5%;
+}
+
+#soubi_image{
+  border: 4px solid #fff;
+  height: 400px;
+  width: auto;
+  max-width: 90%;
+  margin-bottom: 30px;
 }
 
 body {
@@ -77,6 +95,7 @@ body {
 
   
   .pakuri{
+    
     color: #99dbfc;
     padding: 0 25px;
     font-size: 15px;
@@ -89,6 +108,7 @@ body {
     margin: 0;
     
 }
+
 
  
  input {

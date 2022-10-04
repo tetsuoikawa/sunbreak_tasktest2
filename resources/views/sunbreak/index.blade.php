@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>マイページ </title>
+  <title>TOPページ </title>
 </head>
 
 <body>
@@ -29,35 +29,41 @@
               <div class="row justify-content-center">
                 <div class="col-md-10" >
                   <div class="pakuri">
+
+                    <div><a href="">Topページ</a>&nbsp;|&nbsp;&nbsp; </div>
+
+                    <form method="GET" name="form3" id="head_create" action="{{route('sunbreak.create')}}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="sunbreak" value="新規投稿ページ">
+                      <a href="javascript:form3.submit()">新規投稿</a>&nbsp;|&nbsp;&nbsp;
+                    </form>
+
+                    <div id="head_login"><a href="/login">ログイン</a>&nbsp;|&nbsp;&nbsp; </div>
+                    <div id="head_register"><a href="/register">ユーザー登録</a></div>
+
+                    <form method="POST" name="form1" id="head_mypage" action="{{route('sunbreak.mypage')}}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="user_name" value="名前">
+                      <a href="javascript:form1.submit()">マイページ</a>
+                    </form>
+
                     <?php
                     $un = optional(Auth::user())->name;
-                    if( $un !== null){
-                      echo '
-                    <div><a href="">Topページ</a> &nbsp;|&nbsp;&nbsp;</div>
-                    <div><a href="sunbreak/create">新規投稿</a> &nbsp;|&nbsp;&nbsp;</div>
-                    <div><a href="sunbreak/mypage"  onclick="sendPost(event)"> マイページ</a> &nbsp;|&nbsp;&nbsp;</div>
-                      ';
-                    }else{
-                      echo '
-                    <div><a href="">Topページ</a> &nbsp;|&nbsp;&nbsp;</div>
-                    <div><a href="sunbreak/create">新規投稿</a> &nbsp;|&nbsp;&nbsp;</div>
-                    <div><a href="/login">ログイン</a> &nbsp;|&nbsp;&nbsp;</div>
-                    <div><a href="/register">ユーザー登録</a></div>
-                      ';   
-                    };
-                    
                     ?>
-                    <Br>
-                      <Br>
-                </div>
-                <?php
-                echo'
-                 <form method="POST" action="{{route("sunbreak.mypage")}}" enctype="multipart/form-data">
-                 @csrf
-                 <input class="btn btn-outline-primary" type="submit" value="マイページ">
-                 </form>'
-               ?>
-                  
+
+                    <script>
+                       var ert = '<?php echo $un;  ?>';
+
+                      if(ert !== ''){
+                        head_login.style.display = 'none';
+                        head_register.style.display = 'none';
+                      }
+
+                      if(ert == ''){                    
+                        head_mypage.style.display = 'none';
+                      }
+                    </script>
+              </div>
 
 
                 <div class="card-body">
@@ -373,12 +379,18 @@
                                               ?>
 
                                               <Br>
-                                              <h4>装備詳細</h4>
+                                            <div style="text-align:left">
+                                              <h3 id="fewleft">装備詳細</h4>
+                                            </div>
+                                            <Br>
+                                            <Br>
+                                            <img src = "{{ asset('storage/' . $sunbreak->photo) }}" 
+                                            class="card-img-top" alt="Wild Landscape" id="soubi_image">
+                                            </img>
+                                            <Br>
+                                            <Br>
 
-
-                                          
-
-
+                                        
                                                 <div class="card w-100">
                                                   <div class="card-body">
                                                   <div style="text-align:left">
@@ -389,7 +401,9 @@
                                                </div>
                                                <Br>
                                                <Br>
-                                                <h3>コメント欄</h3>
+                                              <div style="text-align:left">
+                                                <h3 id="fewleft">コメント欄</h3>
+                                              </div>
                                                 <Br>
                                                 <div class="form-outline">
                                                   <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
