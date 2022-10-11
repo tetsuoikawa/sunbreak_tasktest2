@@ -22,10 +22,6 @@
 @section('content')
 
 <div class="card">
-  <div style="text-align:center">
-
-   <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1782859/69f8d57b-ffe4-2843-02ca-9665569fbab1.png" class="img-fluid"> 
-  </div>
   <Br>
  
   <div class="row justify-content-center">
@@ -60,14 +56,31 @@
 <div class="container">
 
     <div class="row justify-content-center">
-        <div class="col-md-12" >
+      <div class="col-md-12" >
 
-<div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="card mb-3">
+          <img src="http://127.0.0.1:8000/storage/img/image_cap.png" class="card-img-top" alt="Wild Landscape"/>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+            <Br>
+            <Br>
+            <Br>
+          </div>
+        </div>
+
+<div class="row row-cols-1 row-cols-md-2 g-">
   <div class="col">
     <div class="card">
 
      
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+      <img src="https://image.freepik.com/free-icon/no-translate-detected_318-2021.jpg" class="card-img-top" alt="Hollywood Sign on The Hill"/>
       <div class="card-body">
         <h5 class="card-title">
           {{ Auth::user()->name }}
@@ -77,25 +90,6 @@
           additional content. This content is a little bit longer.
         </p>
       </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <Br>
-        <h5 class="card-title">ランキング</h5>
-        <Br>
-        <div class="card" style="width: 18rem;">
-          <ul class="list-group list-group-light list-group-small">
-            <li class="list-group-item px-3">Cras justo odio</li>
-            <li class="list-group-item px-3">Dapibus ac facilisis in</li>
-            <li class="list-group-item px-3">Vestibulum at eros</li>
-            <li class="list-group-item px-3">Vestibulum at eros</li>
-          </ul>
-        </div>
-      </div>
-      <Br>
-        <Br>
     </div>
   </div>
 </div>

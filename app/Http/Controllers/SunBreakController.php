@@ -49,14 +49,14 @@ class SunBreakController extends Controller
             $sunbreaks = DB::table('sunbreaks')
             ->where('gender', $gender2 )
             ->orderBy('id', 'desc')
-            ->select('id','title','contact','buki','soubi1','soubi2','soubi3','soubi4','soubi5','series','photo')
+            ->select('id','title','username','contact','series','photo','photo2','photo3','photo4','photo5','photo6')
             ->paginate(20);
 
         }else if($gender2 == '2' and $series2 !== '0'){
             $sunbreaks = DB::table('sunbreaks')
             ->where('series', $series2 )
             ->orderBy('id', 'desc')
-            ->select('id','title','contact','buki','soubi1','soubi2','soubi3','soubi4','soubi5','series','photo')
+            ->select('id','title','username','contact','series','photo','photo2','photo3','photo4','photo5','photo6')
             ->paginate(20);
         }else if($gender2 !== '2' and $series2 !== '0'){
             //WHERE `gender`=1 AND `series`=0 ORDER BY `id` DESC
@@ -64,12 +64,12 @@ class SunBreakController extends Controller
             ->where('gender', $gender2 )
             ->where('series', $series2 )
             ->orderBy('id', 'desc')
-            ->select('id','title','contact','buki','soubi1','soubi2','soubi3','soubi4','soubi5','series','photo')
+            ->select('id','title','username','contact','series','photo','photo2','photo3','photo4','photo5','photo6')
             ->paginate(20);
         }else{
             $sunbreaks = DB::table('sunbreaks')
             ->orderBy('id','DESC')
-            ->select('id','title','contact','buki','soubi1','soubi2','soubi3','soubi4','soubi5','series','photo')
+            ->select('id','title','username','contact','series','photo','photo2','photo3','photo4','photo5','photo6')
             ->paginate(20);
         }
 
