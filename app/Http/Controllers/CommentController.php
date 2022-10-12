@@ -26,7 +26,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
-        dd('aaaa');
+        dd(commentReply);
         Log::debug('message');
     }
 

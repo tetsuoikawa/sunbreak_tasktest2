@@ -5,9 +5,8 @@ const axios = require("axios");
 // btn-submit-comment
 document.getElementById('btn-submit-comment').addEventListener('click', ()=>{
     let commentReply = document.getElementById('textAreaExample').value;
-    axios.post('/api/comment' , commentReply).then(()=>{
-        action="{{route('comment.store')}}";
-        console.log(comment_reply);
+    axios.post('/api/comment' , [commentReply]).then(()=>{
+        console.log(commentReply);
     });
 });
 

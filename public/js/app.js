@@ -37344,9 +37344,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); /
 
 document.getElementById('btn-submit-comment').addEventListener('click', function () {
   var commentReply = document.getElementById('textAreaExample').value;
-  axios.post('/api/comment', commentReply).then(function () {
-    action = "{{route('comment.store')}}";
-    console.log(comment_reply);
+  axios.post('/api/comment', [commentReply]).then(function () {
+    console.log(commentReply);
   });
 }); //<?php  echo $thumbFlame; ?>.addEventListener('click', function(<?php  echo $event; ?>) {
 //    if (<?php  echo $event; ?>.target.src) {

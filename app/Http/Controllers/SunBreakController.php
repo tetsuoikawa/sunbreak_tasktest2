@@ -276,11 +276,11 @@ class SunBreakController extends Controller
     public function mypage(Request $request)
     {
         //WHERE `username` = 'あああ'
-        $username3 = $request->input('username3');
         $sunbreaks = DB::table('sunbreaks')
-        ->where('username', $username3)
-        ->select('id','title','username','contact','buki','soubi1','soubi2','soubi3','soubi4','soubi5','series','photo')
+        ->orderBy('id','DESC')
+        ->select('id','title','username','contact','series','photo','photo2','photo3','photo4','photo5','photo6')
         ->paginate(20);
+        
 
 
        // $sunbreaks = SunBreak::all;
