@@ -79,5 +79,4 @@ Auth::routes();
 
 Route::get('/home', 'SunBreakController@index')->name('sunbreak.index');
 
-
-
+Route::post('/api/comment', 'CommentController@store')->name('comment.store');

@@ -20,12 +20,12 @@
 
 <div class="container">
          
-            <div class="card">
-              <div style="text-align:center">
+  <div class="card">
+    <div style="text-align:center">
 
-               <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1782859/69f8d57b-ffe4-2843-02ca-9665569fbab1.png" class="img-fluid"> 
-              </div>
-              <Br>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1782859/69f8d57b-ffe4-2843-02ca-9665569fbab1.png" class="img-fluid"> 
+    </div>
+<Br>
               <div class="row justify-content-center">
                 <div class="col-md-10" >
                   <div class="pakuri">
@@ -63,7 +63,7 @@
                         head_mypage.style.display = 'none';
                       }
                     </script>
-              </div>
+  </div>
 
 
                 <div class="card-body">
@@ -405,12 +405,13 @@
                                                 <h3 id="fewleft">コメント欄</h3>
                                               </div>
                                                 <Br>
+                                            
                                                 <div class="form-outline">
-                                                  <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+                                                  <textarea class="form-control" id="textAreaExample" rows="4">sample</textarea>
                                                 </div>
                                                <Br>
                                                <Br>
-                                                <a href="" class="btn btn-border">送信する</a>
+                                                <button class="btn btn-border" id="btn-submit-comment">送信する</button>
                                                 <Br>
                                                 <Br>
                                                <Br>

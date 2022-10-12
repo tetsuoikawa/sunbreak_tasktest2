@@ -37270,6 +37270,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./comment */ "./resources/js/comment.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37330,6 +37332,27 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/comment.js":
+/*!*********************************!*\
+  !*** ./resources/js/comment.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // btn-submit-comment
+
+
+document.getElementById('btn-submit-comment').addEventListener('click', function () {
+  var commentReply = document.getElementById('textAreaExample').value;
+  axios.post('/api/comment', [commentReply]).then(function () {
+    console.log(commentReply);
+  });
+}); //<?php  echo $thumbFlame; ?>.addEventListener('click', function(<?php  echo $event; ?>) {
+//    if (<?php  echo $event; ?>.target.src) {
+//      <?php  echo $mainImage; ?>.src = <?php  echo $event; ?>.target.src;
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -37348,8 +37371,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\php\task_test\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\php\task_test\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\php\task_test2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\php\task_test2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

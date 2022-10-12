@@ -14,11 +14,15 @@
                  <div class="col-md-10" >
                    <div class="pakuri">
 
-                    <form method="GET" name="form2" id="head_mypage" action="{{route('sunbreak.index')}}" enctype="multipart/form-data">
+
+
+                    <form method="GET" name="form_create" id="head_create" action="{{route('sunbreak.index')}}" enctype="multipart/form-data">
                       @csrf
                       <input type="hidden" name="sunbreak" value="TOPページ">
-                      <a href="javascript:form2.submit()">TOPページ</a>&nbsp;|&nbsp;&nbsp;
+                      <a href="javascript:form_create.submit()">TOPページ</a>&nbsp;|&nbsp;&nbsp;
                     </form>
+
+                  
 
                     <div><a href="">新規投稿</a>&nbsp;|&nbsp;&nbsp;</div>
                     <div id="head_login"><a href="/login">ログイン</a>&nbsp;|&nbsp;&nbsp; </div>
@@ -29,8 +33,6 @@
                       <input type="hidden" name="user_name" value="名前">
                       <a href="javascript:form1.submit()">マイページ</a>
                     </form>
-
-
 
                     <?php
                     $un = optional(Auth::user())->name;
